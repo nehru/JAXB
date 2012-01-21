@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        
+<hibernate-mapping schema="SalesLT">
+	<class name="com.cmpe276.dbase.AddressType" table="Address">
+    
+        <id name="AddressID">
+            <generator class="native"/>
+        </id>
+		
+		 
+        <property name="AddressLine1" column="AddressLine1" />
+    	<property name="AddressLine2" column="AddressLine2" />
+		<property name="City" column="City" />
+		<property name="StateProvince" column="StateProvince" />
+		<property name="CountryRegion" column="CountryRegion" />
+		<property name="PostalCode" column="PostalCode" />
+		<!--property name="rowguid" column="rowguid" /-->
+		<!--property name="ModifiedDate" column="ModifiedDate" type="timestamp"/!-->
+		
+	
+    </class>	
+</hibernate-mapping>       

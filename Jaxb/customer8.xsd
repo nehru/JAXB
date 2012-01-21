@@ -1,0 +1,254 @@
+<!-- edited with XMLSpy v2009 sp1 (http://www.altova.com) by vit (wit) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="ProductCategoryType">
+		<xsd:sequence>
+			<xsd:element name="ParentProductCategoryID" type="xsd:int" nillable="true"/>
+			<xsd:element name="Name">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="50"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="ProductCategoryID" type="xsd:int" use="required"/>
+	</xsd:complexType>
+	<xsd:element name="ProductCategory" type="ProductCategoryType"/>
+	<xsd:complexType name="ProductModelType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="xsd:string"/>
+			<xsd:element name="CatalogDescription" type="xsd:anyURI" nillable="true"/>
+			<xsd:element ref="ModelDescription"/>
+		</xsd:sequence>
+		<xsd:attribute name="ProductModelID" type="xsd:int" use="required"/>
+	</xsd:complexType>
+	<xsd:element name="ProductModel" type="ProductModelType"/>
+	<xsd:complexType name="ProductType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="xsd:string"/>
+			<xsd:element name="ProductNumber" type="xsd:string"/>
+			<xsd:element name="Color" type="xsd:string" nillable="true"/>
+			<xsd:element name="StandardCost" type="xsd:double"/>
+			<xsd:element name="ListPrice" type="xsd:double"/>
+			<xsd:element name="Size" nillable="true">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="5"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Weight" type="xsd:double" nillable="true"/>
+			<xsd:element name="ProductCategoryID" type="xsd:int" nillable="true"/>
+			<xsd:element name="ProductModelID" type="xsd:int" nillable="true"/>
+			<xsd:element name="SellStartDate" type="xsd:dateTime"/>
+			<xsd:element name="SellEndDate" type="xsd:dateTime" nillable="true"/>
+			<xsd:element name="DiscontinuedDate" type="xsd:dateTime" nillable="true"/>
+			<xsd:element name="ThumbNailPhoto" type="xsd:base64Binary" nillable="true"/>
+			<xsd:element name="ThumbnailPhotoFileName" nillable="true">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="50"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element ref="ProductModel"/>
+			<xsd:element ref="ProductCategory"/>
+		</xsd:sequence>
+		<xsd:attribute name="ProductID" type="xsd:int" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="ProductDescriptionType">
+		<xsd:sequence>
+			<xsd:element name="Description">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="400"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="ProductDescriptionID" type="xsd:int" use="required"/>
+	</xsd:complexType>
+	<xsd:element name="ProductDescription" type="ProductDescriptionType"/>
+	<xsd:element name="Product" type="ProductType"/>
+	<xsd:complexType name="SalesOrderType">
+		<xsd:sequence>
+			<xsd:element name="RevisionNumber" type="xsd:int"/>
+			<xsd:element name="OrderDate" type="xsd:dateTime"/>
+			<xsd:element name="DueDate" type="xsd:dateTime"/>
+			<xsd:element name="ShipDate" type="xsd:dateTime" nillable="true"/>
+			<xsd:element name="Status" type="xsd:int"/>
+			<xsd:element name="OnlineOrderFlag" type="xsd:boolean"/>
+			<xsd:element name="SalesOrderNumber" type="xsd:string"/>
+			<xsd:element name="PurchaseOrderNumber" nillable="true">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="25"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="AccountNumber" nillable="true">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="15"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="CustomerID" type="xsd:int"/>
+			<xsd:element name="ShipToAddressID" type="xsd:int" nillable="true"/>
+			<xsd:element name="BillToAddressID" type="xsd:int" nillable="true"/>
+			<xsd:element name="ShipMethod">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="50"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="CreditCardApprovalCode" nillable="true">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="15"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="SubTotal" type="xsd:double"/>
+			<xsd:element name="TaxAmt" type="xsd:double"/>
+			<xsd:element name="Freight" type="xsd:double"/>
+			<xsd:element name="TotalDue" type="xsd:double"/>
+			<xsd:element name="Comment" type="xsd:string" nillable="true"/>
+			<xsd:element name="BillToAddress" type="AddressType"/>
+			<xsd:element name="ShipToAddress" type="AddressType"/>
+			<xsd:element ref="SalesOrderDetail"/>
+		</xsd:sequence>
+		<xsd:attribute name="SalesOrderID" use="required"/>
+	</xsd:complexType>
+	<xsd:element name="SalesOrder" type="SalesOrderType"/>
+	<xsd:complexType name="CustomerAddressType">
+		<xsd:sequence>
+			<xsd:element name="AddressID" type="xsd:int"/>
+			<xsd:element name="AddressType">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="50"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element ref="Address"/>
+		</xsd:sequence>
+		<xsd:attribute name="CustomerID" type="xsd:int" use="required"/>
+	</xsd:complexType>
+	<xsd:element name="CustomerAddress" type="CustomerAddressType"/>
+	<xsd:complexType name="AddressType">
+		<xsd:sequence>
+			<xsd:element name="AddressLine1" type="xsd:string"/>
+			<xsd:element name="AddressLine2" type="xsd:string" nillable="true"/>
+			<xsd:element name="City" type="xsd:string"/>
+			<xsd:element name="StateProvince" type="xsd:string"/>
+			<xsd:element name="CountryRegion" type="xsd:string"/>
+			<xsd:element name="PostalCode" type="xsd:string"/>
+			<xsd:element name="rowguid" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ModifiedDate" type="xsd:dateTime" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="AddressID" type="xsd:int" use="required"/>
+	</xsd:complexType>
+	<xsd:element name="Address" type="AddressType"/>
+	<xsd:complexType name="SalesOrderDetailType">
+		<xsd:sequence>
+			<xsd:element name="OrderQty" type="xsd:int"/>
+			<xsd:element name="ProductID" type="xsd:int"/>
+			<xsd:element name="UnitPrice" type="xsd:double"/>
+			<xsd:element name="UnitPriceDiscount" type="xsd:double"/>
+			<xsd:element name="LineTotal" type="xsd:double"/>
+			<xsd:element ref="Product"/>
+		</xsd:sequence>
+		<xsd:attribute name="SalesOrderID" type="xsd:int" use="required"/>
+		<xsd:attribute name="SalesOrderDetailID" type="xsd:int" use="required"/>
+	</xsd:complexType>
+	<xsd:element name="SalesOrderDetail" type="SalesOrderDetailType"/>
+	<xsd:complexType name="ModelDescriptionType">
+		<xsd:sequence>
+			<xsd:element name="Culture">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:language">
+						<xsd:maxLength value="6"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element ref="ProductDescription"/>
+		</xsd:sequence>
+		<xsd:attribute name="ProductModelID" type="xsd:int" use="required"/>
+		<xsd:attribute name="ProductDescriptionID" type="xsd:int" use="required"/>
+	</xsd:complexType>
+	<xsd:element name="ModelDescription" type="ModelDescriptionType"/>
+	<xsd:element name="Customer" type="CustomerType"/>
+	<xsd:complexType name="CustomerType">
+		<xsd:sequence>
+			<xsd:element name="NameStyle" type="xsd:byte"/>
+			<xsd:element name="Title" nillable="true">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="8"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="FirstName">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="50"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="MiddleName" nillable="true">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="50"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="LastName">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="50"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Suffix" nillable="true">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="10"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="CompanyName" nillable="true">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="128"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="SalesPerson" nillable="true">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="256"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="EmailAddress" nillable="true">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="50"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Phone" nillable="true">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="25"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element ref="SalesOrder"/>
+			<xsd:element ref="CustomerAddress"/>
+		</xsd:sequence>
+		<xsd:attribute name="CustomerID" type="xsd:int" use="required"/>
+	</xsd:complexType>
+</xsd:schema>

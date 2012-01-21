@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        
+<hibernate-mapping schema="SalesLT">
+	<class name="com.cmpe276.dbase.ProductType" table="Product">
+    
+        <id name="ProductID">
+            <generator class="native"/>
+        </id>
+		
+		 
+        <property name="Name" column="Name" />
+    	<property name="ProductNumber" column="ProductNumber"  />
+		
+		<property name="Color" column="Color" />
+		<property name="StandardCost" column="StandardCost" />
+		
+		<property name="ListPrice" column="ListPrice" />
+		<property name="Size" column="Size" />
+		<property name="Weight" column="Weight" />
+		<property name="ProductCategoryID" column="ProductCategoryID" />
+		<property name="ProductModelID" column="ProductModelID" />
+		<!--property name="SellStartDate" column="SellStartDate" type="timestamp"/-->
+		<!--property name="SellEndDate" column="SellEndDate" type="timestamp"/-->
+		<!--property name="DiscontinuedDate" column="DiscontinuedDate" type="timestamp"/-->
+		<property name="ThumbNailPhoto" column="ThumbNailPhoto" type="binary"/>
+		<property name="ThumbnailPhotoFileName" column="ThumbnailPhotoFileName" />
+				
+	
+    </class>	
+</hibernate-mapping>       

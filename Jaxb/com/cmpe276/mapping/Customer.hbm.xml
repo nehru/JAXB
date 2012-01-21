@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        
+<hibernate-mapping schema="SalesLT">
+	<class name="com.cmpe276.dbase.CustomerType" table="Customer">
+    
+        <id name="CustomerID">
+            <generator class="native"/>
+        </id>
+		
+		 
+        <property name="NameStyle" column="NameStyle" />
+    	<property name="Title" column="Title" />
+		<property name="FirstName" column="FirstName" />
+		<property name="MiddleName" column="MiddleName" />
+		<property name="LastName" column="LastName" />
+		<property name="Suffix" column="Suffix" />
+		<property name="CompanyName" column="CompanyName" />
+		<property name="SalesPerson" column="SalesPerson" />
+		<property name="EmailAddress" column="EmailAddress" />
+		<property name="Phone" column="Phone" />
+		
+    </class>	
+</hibernate-mapping>       

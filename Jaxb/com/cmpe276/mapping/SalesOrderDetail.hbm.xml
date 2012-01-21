@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        
+<hibernate-mapping schema="SalesLT">
+	<class name="com.cmpe276.dbase.SalesOrderDetailType" table="SalesOrderDetail">
+    
+        <id name="SalesOrderID">
+            <generator class="native"/>
+        </id>
+		
+        <property name="SalesOrderDetailID" column="SalesOrderDetailID" />
+    	<property name="OrderQty" column="OrderQty" />
+		<property name="ProductID" column="ProductID" />
+		<property name="UnitPrice" column="UnitPrice" />
+		<property name="UnitPriceDiscount" column="UnitPriceDiscount" />
+		<property name="LineTotal" column="LineTotal" />
+		
+				
+	
+    </class>	
+</hibernate-mapping>       

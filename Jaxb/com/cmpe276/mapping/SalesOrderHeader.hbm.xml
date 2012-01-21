@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        
+<hibernate-mapping schema="SalesLT">
+	<class name="com.cmpe276.dbase.SalesOrderType" table="SalesOrderHeader">
+    
+        <id name="SalesOrderID">
+            <generator class="native"/>
+        </id>
+		
+		 
+        <property name="RevisionNumber" column="RevisionNumber" />
+		
+    	<!--property name="OrderDate" column="OrderDate" type="timestamp" /-->
+		<!--property name="DueDate" column="DueDate" type="timestamp"/-->
+		<!--property name="ShipDate" column="ShipDate" type="timestamp"/-->
+		
+		<property name="Status" column="Status" />
+		<property name="OnlineOrderFlag" column="OnlineOrderFlag" />
+		<property name="SalesOrderNumber" column="SalesOrderNumber" />
+		<property name="PurchaseOrderNumber" column="PurchaseOrderNumber" />
+		<property name="AccountNumber" column="AccountNumber" />
+		<property name="CustomerID" column="CustomerID" />
+		<property name="ShipToAddressID" column="ShipToAddressID" />
+		<property name="BillToAddressID" column="BillToAddressID" />
+		<property name="ShipMethod" column="ShipMethod" />
+		<property name="CreditCardApprovalCode" column="CreditCardApprovalCode" />
+		<property name="SubTotal" column="SubTotal" />
+		<property name="TaxAmt" column="TaxAmt" />
+		<property name="Freight" column="Freight" />
+		<property name="TotalDue" column="TotalDue" />
+		<property name="Comment" column="Comment" />
+		
+		
+	
+    </class>	
+</hibernate-mapping>       
